@@ -526,9 +526,9 @@ static readonly Command: { [key: string]: number } = {
 이후 [public_api.ts](./src/stubs/public_api.ts)를 거치고 [index.ts](./src/stubs/index.ts)를 거치고 yarn package 명령어를 통해 /stubs/ 디렉토리가 생성되고, node_package가 생성되어 다른 node 프로젝트에서 쓰일 수 있는, c++을 통해 .dll api를 호출할 수 있는 node_module이 탄생하게 된다.(../node_package/@dimensional/[모듈명].tgz)<br />
 yarn package와 같이 명령어들에 대한 설명은 [이 문서](./_PackageJsonInstruction.md) 참고하길 바란다.
 
-혹자는 npm install or yarn add [모듈명].tgz 하면 node_module 이 설치 된다 하는 한편, 혹자는 안된다.<br/>
+혹자는 npm install or yarn add node*package*경로/[모듈명].tgz 하면 node_module 이 설치 된다 하는 한편, 혹자는 안된다.<br/>
 그럴 때에는 .tgz 파일 압축을 해제한 후, 그 압축 해제된 폴더를 install 해주도록 하자.
 
 ```bash
-npm install or yarn add [모듈명]
+npm install or yarn add node_package_경로/[모듈명]
 ```
