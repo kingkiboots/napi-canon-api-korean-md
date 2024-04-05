@@ -1,0 +1,9 @@
+build/
+cmake-build/
+cmake-build-debug/
+node_modules/
+prebuilds/
+npm-debug.log
+
+third_party/*
+!third_party/README.md
