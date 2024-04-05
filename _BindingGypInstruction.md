@@ -36,6 +36,6 @@
         -   <!(...) 구문은 GYP의 실행 시 평가(exec-time evaluation) 연산자로, 포함된 명령어를 실행하고 그 결과를 GYP 구성에 삽입합니다. 여기서는 node-addon-api의 헤더 파일 디렉토리를 include_dirs 목록에 추가합니다.
 
 -   conditions: 특정 조건(예: 운영 체제)에 따라 적용할 설정을 정의합니다. - OS==\"win\"와 같은 조건 하에 **msvs_settings**와 libraries, copies 등의 설정을 할 수 있습니다. 이는 Windows 환경에서의 컴파일러 설정, 링크할 라이브러리, 빌드 후 복사할 파일 등을 지정합니다. - OS==\"mac\"에 대한 설정은 macOS 환경에서의 빌드 옵션을 정의합니다.
-    > 여기서 /third_party에 있는 EDSDK 모듈을 라이브러리로 지정하고 include_dirs한다. **여기에서 .dll 라이브러리의 경로를 지정한다. 이로서 c++ 파일에서 napi와 EDSDK.dll의 기능을 라이브러리로 사용가능한 것이다.**
+    > 여기서 /third_party에 있는 EDSDK 모듈을 라이브러리로 지정하고 include_dirs한다. **여기에서 .dll 라이브러리의 경로를 지정한다. 이로서 c++ 파일에서 napi와 EDSDK.dll의 기능을 라이브러리로 사용가능한 것이다.(include_dirs, libraries)**
 
 #### c++에서 napi와 EDSDK.dll의 기능을 어떻게 사용하는 지 알고 싶다면 [이 문서](./_NapiInstruction.md) 참고
