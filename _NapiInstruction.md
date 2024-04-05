@@ -20,6 +20,7 @@
         -   [멤버변수](#멤버변수)
         -   [enum](#enum)
         -   [exporting](#camera-apitsexporting)
+-   [패키징과 다른 프로젝트에서의 사용](#패키징과-다른-프로젝트에서의-사용)
 
 ## 요구 개발환경
 
@@ -517,6 +518,17 @@ static readonly Command: { [key: string]: number } = {
 
 마지막 단계이다.<br/>
 이제 javascript에서도 add-on에 맞는 속성들을 선언하였으니 이것들을 node js에서 라이브러리로 사용할 수 있게 export 해야한다.<br />
-이 프로젝트에서는 [camera-api.ts](./src/stubs/camera-api/CameraApi.ts)에서 뿌려주고 있다. <br />
-이후 [public_api.ts](./src/stubs/public_api.ts)를 거치고 [index.ts](./src/stubs/index.ts)를 거치고 yarn package 명령어를 통해 /stubs/ 디렉토리가 생성되고, node_package가 생성되어 다른 node 프로젝트에서 쓰일 수 있는, c++을 통해 .dll api를 호출할 수 있는 node_module이 탄생하게 되는 것이다.
+아까 .cc의 [camera-api.cc](#camera-apitsexporting)은 dll <-> c++ 하는 코드들의 **최종 출구**라면, [camera-api.ts](./src/stubs/camera-api/CameraApi.ts)는 c++ <-> js 하는 것들의 **최종출구** 인 것이다.<br />
+이 프로젝트에서 [camera-api.ts](./src/stubs/camera-api/CameraApi.ts)를 통해 다른 프로젝트에서 사용할 node module의 js 함수들이 exporting 된다.<br />
+
+## 패키징과 다른 프로젝트에서의 사용
+
+이후 [public_api.ts](./src/stubs/public_api.ts)를 거치고 [index.ts](./src/stubs/index.ts)를 거치고 yarn package 명령어를 통해 /stubs/ 디렉토리가 생성되고, node_package가 생성되어 다른 node 프로젝트에서 쓰일 수 있는, c++을 통해 .dll api를 호출할 수 있는 node_module이 탄생하게 된다.(../node_package/@dimensional/[모듈명].tgz)<br />
 yarn package와 같이 명령어들에 대한 설명은 [이 문서](./_PackageJsonInstruction.md) 참고하길 바란다.
+
+혹자는 npm install or yarn add [모듈명].tgz 하면 node_module 이 설치 된다 하는 한편, 혹자는 안된다.<br/>
+그럴 때에는 .tgz 파일 압축을 해제한 후, 그 압축 해제된 폴더를 install 해주도록 하자.
+
+```bash
+npm install or yarn add [모듈명]
+```
